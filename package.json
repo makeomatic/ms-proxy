@@ -32,7 +32,8 @@
     "ms-amqp-conf": "^0.2.0",
     "ms-amqp-transport": "^1.2.0",
     "ms-validation": "^1.0.1",
-    "mservice": "^1.5.0"
+    "mservice": "^1.6.0",
+    "request-promise": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
