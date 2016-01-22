@@ -1,0 +1,71 @@
+{
+  "name": "ms-proxy",
+  "description": "Handles arbitrary proxy relations",
+  "main": "./lib/index.js",
+  "scripts": {
+    "compile": "./node_modules/.bin/babel -d ./lib ./src",
+    "rebuild": "if [ \"$SKIP_REBUILD\" != \"1\" ]; then npm rebuild; fi",
+    "prepublish": "npm run lint && npm run compile",
+    "test": "./test/docker.sh",
+    "start": "node ./bin/mservice.js | ./node_modules/.bin/bunyan -o short",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "docker-release": "./docker-release.sh",
+    "lint": "./node_modules/.bin/eslint ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/makeomatic/ms-proxy.git"
+  },
+  "author": "Vitaly Aminev <v@makeomatic.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makeomatic/ms-proxy/issues"
+  },
+  "homepage": "https://github.com/makeomatic/ms-proxy#readme",
+  "optionalDependencies": {
+    "hiredis": "^0.4.1"
+  },
+  "dependencies": {
+    "bunyan": "^1.5.1",
+    "ioredis": "^1.14.0",
+    "lodash": "^4.0.0",
+    "ms-amqp-conf": "^0.2.0",
+    "ms-amqp-transport": "^1.2.0",
+    "ms-validation": "^1.0.1",
+    "mservice": "^1.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.5",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-transform-class-properties": "^6.4.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.4.0",
+    "babel-plugin-transform-es2015-parameters": "^6.4.0",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.3.13",
+    "babel-plugin-transform-es2015-spread": "^6.4.0",
+    "babel-plugin-transform-object-rest-spread": "^6.3.13",
+    "babel-plugin-transform-strict-mode": "^6.3.13",
+    "babel-register": "^6.4.3",
+    "chai": "^3.4.1",
+    "codecov.io": "^0.1.6",
+    "cz-conventional-changelog": "^1.1.5",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^3.1.0",
+    "eslint-plugin-mocha": "^1.1.0",
+    "faker": "^3.0.1",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.2",
+    "json": "^9.0.3",
+    "latest-version-cli": "^1.0.0",
+    "mocha": "^2.3.3",
+    "mocha-multi": "^0.7.2",
+    "semantic-release": "^4.3.5"
+  },
+  "release": {
+    "verifyConditions": []
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
