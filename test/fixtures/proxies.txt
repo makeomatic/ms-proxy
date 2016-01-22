@@ -1,0 +1,9 @@
+http://valid.proxy:80
+missingprotocol.com:1000
+socks://231.33.12.32:5555
+https://323.232.321.333:4234
+http://213412412@wrongauth.com:321
+---------------
+@auto.com:80
+http://missingport.tld
+http://correct:auth@proxydude.com:8080

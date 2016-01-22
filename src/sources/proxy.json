@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [ "protocol", "host", "port" ],
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "enum": [ "http:", "https:", "socks:" ]
+    },
+    "hostname": {
+      "type": "string",
+      "oneOf": [
+        { "format": "hostname" },
+        { "format": "ipv4" },
+        { "format": "ipv6" }
+      ]
+    },
+    "port": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        {
+          "type": "integer",
+          "minumum": 1
+        }
+      ]
+    },
+    "auth": {
+      "type": "string",
+      "pattern": "^.+:.+$"
+    }
+  }
+}

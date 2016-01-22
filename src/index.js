@@ -32,12 +32,17 @@ module.exports = class Proxy extends Mservice {
     validator: ['../schemas'],
     defaultIp: null,
     echoOpts: {
-      url: 'https://localhost',
+      url: 'https://echo.ark.com',
       method: 'POST',
       timeout: 10000,
       strictSSL: false,
       json: true,
     },
+    proxies: {
+      // must inclue key: path, strings, array of strings
+    },
+    // after check is completed - schedule the next one in 10 minutes
+    pulse: 10 * 60 * 1000,
   };
 
   /**
@@ -64,7 +69,10 @@ module.exports = class Proxy extends Mservice {
     return this._config;
   }
 
-  init() {
+  /**
+   * In this function we detect currently used external ip address
+   */
+  resolveExternalAdress() {
     const { config: { defaultIp, echoOpts } } = this;
 
     if (defaultIp) {
@@ -80,9 +88,15 @@ module.exports = class Proxy extends Mservice {
     });
   }
 
+  /**
+   * Init current service and plugins
+   */
   connect() {
     return Promise
-      .join(super.connect(), this.init())
+      .join(
+        super.connect(),
+        this.resolveExternalAdress()
+      )
       .tap(() => {
         this.log.info('communicating via external ip %s', this.defaultIp);
       });

@@ -1,0 +1,42 @@
+redis:
+  image: redis:3.0.6-alpine
+  container_name: redis
+  hostname: redis
+  expose:
+    - "6379"
+
+redis_sentinel:
+  image: redis:3.0.6-alpine
+  container_name: redis_sentinel
+  hostname: redis_sentinel
+  volumes:
+    - ./redis:/etc/redis
+  links:
+    - "redis"
+  expose:
+    - "26379"
+  command: redis-server /etc/redis/redis.conf --sentinel
+
+rabbitmq:
+  image: makeomatic/alpine-rabbitmq:3.5.7
+  container_name: rabbitmq
+  hostname: rabbitmq
+  expose:
+    - "4369"
+    - "5672"
+    - "15672"
+    - "25672"
+
+tester:
+  image: ${IMAGE}
+  links:
+    - rabbitmq
+    - redis_sentinel
+  working_dir: /src
+  volumes:
+    - ${PWD}:/src
+  environment:
+    NODE_ENV: ${NODE_ENV}
+    DEBUG: ${DEBUG}
+    SKIP_REBUILD: ${SKIP_REBUILD}
+  command: 'true'
