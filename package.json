@@ -23,21 +23,21 @@
   },
   "homepage": "https://github.com/makeomatic/ms-proxy#readme",
   "optionalDependencies": {
-    "hiredis": "^0.4.1"
+    "hiredis": "^0.5.0"
   },
   "dependencies": {
     "bunyan": "^1.5.1",
-    "ioredis": "^1.14.0",
+    "ioredis": "^2.5.0",
     "lodash": "^4.0.0",
     "ms-amqp-conf": "^0.2.0",
-    "ms-amqp-transport": "^1.2.0",
-    "ms-validation": "^1.0.1",
-    "mservice": "^1.6.0",
-    "request-promise": "^2.0.0"
+    "ms-amqp-transport": "^7.2.0",
+    "ms-validation": "^3.0.0",
+    "mservice": "^6.1.1",
+    "request-promise": "^4.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.4.5",
-    "babel-eslint": "^5.0.0-beta6",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.4.0",
     "babel-plugin-transform-es2015-destructuring": "^6.4.0",
     "babel-plugin-transform-es2015-parameters": "^6.4.0",
@@ -48,16 +48,16 @@
     "babel-register": "^6.4.3",
     "chai": "^3.4.1",
     "codecov.io": "^0.1.6",
-    "cz-conventional-changelog": "^1.1.5",
-    "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^3.1.0",
-    "eslint-plugin-mocha": "^1.1.0",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-mocha": "^4.9.0",
     "isparta": "^4.0.0",
     "istanbul": "^0.4.2",
     "json": "^9.0.3",
     "latest-version-cli": "^1.0.0",
-    "mocha": "^2.3.3",
-    "semantic-release": "^4.3.5"
+    "mocha": "^3.3.0",
+    "semantic-release": "^6.3.2"
   },
   "release": {
     "verifyConditions": []
